@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .containerr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 20vh;
+        padding: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .prediction-container {
+        width: 100%;
+        border-radius: 10px;
+        background-color: #d8e1f0;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        padding: 50px;
+        text-align: center;
+    }
+    .text-primary {
+        color: #007bff;
+        font-weight: bold;
+        font-size: xx-large;
+    }
+    .text-secondary {
+        color: #6c757d;
+        font-weight: normal;
+        font-size: x-large;
+        margin-bottom: 20px;
+    }
+    .hidden {
+        display: none;
+    }
+    .btn-custom {
+        padding: 10px 20px;
+        margin: 5px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: color 0.2s ease, font-size 0.15s ease;
+    }
+    .btn-custom:hover {
+        background-color: #0056b3;
+        color: white;
+        font-size: 1.1rem;
+    }
+    .btn-active {
+        background-color: #0056b3;
+        color: white;
+    }
+    #icon{
+        padding: 5px;
+    }
+    @media (max-width: 768px) {
+        .btn-custom {
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+        .prediction-container {
+            width: auto;
+        }
+    }
+</style>
+
+<div class="containerr">
+    <div class="prediction-container">
+        {% if disease_name and description %}
+            <h3 class="text-primary">Disease: {{ disease_name[0] }}</h3>
+            <p class="text-secondary" style="text-align:left;">{{ description }}</p>
+            <div class="mt-5">
+                <button class="btn btn-custom" id="medicine-button">
+                    <i class="fas fa-pills" id="icon"></i>Medicine Recommendation</button>
+                <button class="btn btn-custom" id="diet-button">
+                    <i class="fas fa-apple-alt" id="icon"></i>Diet Recommendation</button>
+            </div>
+            <div id="medicine" class="mt-4 hidden">
+                <h3 class="text-primary">Medicine Description</h3>
+                <p class="text-secondary" style="text-align:left;">
+                    {% for med, desc in descriptions.items() %}
+                    <strong>{{ med }}:</strong> {{ desc }}<br>
+                    {% endfor %}
+                    <a href="{{ url_for('static', filename='hospitals.html') }}" target="_blank" class="btn btn-custom">
+                        <i class="fa-solid fa-hospital" id="icon"></i>Hospitals Nearby
+                    </a>
+                </p>
+            </div>
+            <div id="diet" class="hidden">
+                <h3 class="text-primary">Diet</h3>
+                <p class="text-secondary" style="text-align:left;">{{ ' '.join(diet) }}</p>
+                <a href="{{ url_for('static', filename='hospitals.html') }}" target="_blank" class="btn btn-custom">
+                    <i class="fa-solid fa-hospital" id="icon"></i>Hospitals Nearby
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    const medicineButton = document.getElementById('medicine-button');
+    const dietButton = document.getElementById('diet-button');
+    const medicineDiv = document.getElementById('medicine');
+    const dietDiv = document.getElementById('diet');
+
+    medicineButton.addEventListener('click', () => {
+        medicineDiv.classList.remove('hidden');
+        dietDiv.classList.add('hidden');
+        medicineButton.classList.add('btn-active');
+        dietButton.classList.remove('btn-active');
+    });
+
+    dietButton.addEventListener('click', () => {
+        dietDiv.classList.remove('hidden');
+        medicineDiv.classList.add('hidden');
+        dietButton.classList.add('btn-active');
+        medicineButton.classList.remove('btn-active');
+    });
+</script>
+{% endblock %}

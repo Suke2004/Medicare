@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <div class="head" style="margin:10%;">
+    <div class="text-center">
+        <form method="POST" class="form-signin" style="color: rgb(0, 0, 0);font-size: 1.5rem; ">
+            {{form.hidden_tag()}}
+            <h1 class="h1 mb-3 font-weight-normal" style="padding-top: 20px;">
+                Please LogIn!!
+            </h1>
+            <div class="col-lg-10 mx-auto">
+                <div class="text-center">
+                    {{form.email.label()}}
+                    {{form.email(class="form-control")}}
+                    <br>
+                    {{form.password.label()}}
+                    {{form.password(class="form-control")}}
+                    <br>
+                </div>
+            </div>
+            
+    
+                <div class="col-lg-13 d-flex justify-content-center" id="login">
+                    <style>
+                        #login{
+                        display:flex;
+                        flex-direction:row;
+                        align-items:centre;
+                        justiy-content:center;
+                        }
+                    </style>
+                    {{form.submit(class="btn btn-lg btn-success")}}
+                </div>
+            <br>
+            <div >
+                <h6><span class="text-center" style="text-align: center;font-size: 1.5rem;">Do not have an account?</span></h6>
+                <a class="btn btn-lg btn-secondary" href="{{ url_for('users.register') }}">Register</a>
+             </div>
+
+        </form>
+    </div>
+</div>
+</body>
+{% endblock content %}

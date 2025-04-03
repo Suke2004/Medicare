@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mb-5 d-flex justify-content-center" style="display:flex;flex-direction:column;justify-content:center;padding:130px;">
+  <div class="card" style="background-color: rgba(250, 250, 250, 0.5); font-size: 1.5rem; width: 100%; max-width: 900px;">
+      <div class="card-header text-center">
+          <h2><b>Get In Touch</b></h2>
+      </div>
+      <div class="card-body">
+          <form>
+              <div class="form-group">
+                  <label for="firstName" style="font-weight: bold;">First Name</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="First name">
+              </div>
+              <div class="form-group">
+                  <label for="lastName" style="font-weight: bold;">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Last name">
+              </div>
+              <div class="form-group">
+                  <label for="inputEmail4" style="font-weight: bold;">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group">
+                  <label for="inputAddress" style="font-weight: bold;">Address</label>
+                  <textarea class="form-control" rows="5" id="inputAddress" placeholder="Address"></textarea>
+              </div>
+              <button type="submit" class="btn btn-success btn-block">Submit</button>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+  {% endblock %}
