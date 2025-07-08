@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b2bff0ae41fc0cce2b20412d95a68dfb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 10px; left: 10px; width: 240px; height: auto; 
+                background-color: rgba(255, 255, 255, 0.8); z-index:9999; border:2px solid grey; 
+                font-size:14px; padding: 10px; border-radius: 5px;">
+    <i class="fa fa-map-marker" style="color:blue"></i>&nbsp;You are here<br>
+    <i class="fa fa-map-marker" style="color:red"></i>&nbsp;Nearby Hospitals<br>
+    <p>Click on the markers for details!</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_b2bff0ae41fc0cce2b20412d95a68dfb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b2bff0ae41fc0cce2b20412d95a68dfb = L.map(
+                "map_b2bff0ae41fc0cce2b20412d95a68dfb",
+                {
+                    center: [17.384, 78.4564],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b86526bb7a48f26ad5ed31de056c2de4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b86526bb7a48f26ad5ed31de056c2de4.addTo(map_b2bff0ae41fc0cce2b20412d95a68dfb);
+        
+    
+            var marker_d8f4280b12f96de7c1d95e5cae6324f1 = L.marker(
+                [17.384, 78.4564],
+                {
+}
+            ).addTo(map_b2bff0ae41fc0cce2b20412d95a68dfb);
+        
+    
+            var icon_f24b72a8c06ef67991947c7b0797a5a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_d8f4280b12f96de7c1d95e5cae6324f1.bindTooltip(
+                `<div>
+                     You are here
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d8f4280b12f96de7c1d95e5cae6324f1.setIcon(icon_f24b72a8c06ef67991947c7b0797a5a4);
+            
+    
+            var marker_cluster_c664b54f6c13abcde49da33c10a5a035 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_930a6c5b232c8f5a12d1329ac05ec3c5 = L.marker(
+                [17.3948133, 78.4525058],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_6f172b4fec572a8ec619aa30655c1cbd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db3cfc1a7eca1759fa9ab259033f95e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_695f7e9acc2ccc26a73031d10feaf3e1 = $(`<div id="html_695f7e9acc2ccc26a73031d10feaf3e1" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Mahatma Sriramachandra Centenary Memorial Hospital</strong><br>             <em>Address: Address not available</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.27 km</strong><br>             Direction: NW<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3948133&mlon=78.4525058#map=17/17.3948133/78.4525058' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_db3cfc1a7eca1759fa9ab259033f95e3.setContent(html_695f7e9acc2ccc26a73031d10feaf3e1);
+            
+        
+
+        marker_930a6c5b232c8f5a12d1329ac05ec3c5.bindPopup(popup_db3cfc1a7eca1759fa9ab259033f95e3)
+        ;
+
+        
+    
+    
+                marker_930a6c5b232c8f5a12d1329ac05ec3c5.setIcon(icon_6f172b4fec572a8ec619aa30655c1cbd);
+            
+    
+            var marker_61fad8692b15572871240cc47f576a3a = L.marker(
+                [17.3972385, 78.4562128],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_407e5a0bb233453dd373fbd2913e5119 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bff9ed7a07dacfd0be3244f453a0f9c5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3b276022e77a179439d2fbe9f1ca564a = $(`<div id="html_3b276022e77a179439d2fbe9f1ca564a" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Nice Hospital</strong><br>             <em>Address: # 10-2-247 & 248, Shanti Nagar, Off Masab Tank, Beside Employment Exchange</em><br>             Phone: <strong>040 2345 4545</strong><br>             Distance: <strong style="color: green;">1.47 km</strong><br>             Direction: NW<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3972385&mlon=78.4562128#map=17/17.3972385/78.4562128' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_bff9ed7a07dacfd0be3244f453a0f9c5.setContent(html_3b276022e77a179439d2fbe9f1ca564a);
+            
+        
+
+        marker_61fad8692b15572871240cc47f576a3a.bindPopup(popup_bff9ed7a07dacfd0be3244f453a0f9c5)
+        ;
+
+        
+    
+    
+                marker_61fad8692b15572871240cc47f576a3a.setIcon(icon_407e5a0bb233453dd373fbd2913e5119);
+            
+    
+            var marker_c2d77a7e68cc9b3b5883048c0c75b5d0 = L.marker(
+                [17.3946344, 78.4519084],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_e34b8ad5fc5002934ab705ef6019e736 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49f207175b87083bec9a6d0c5143ebd7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_46eae9c28f8edc7a4e8c1ed9168a599d = $(`<div id="html_46eae9c28f8edc7a4e8c1ed9168a599d" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Rohan Hospital</strong><br>             <em>Address: 229/2RT, Beside Post Office , Vijayanagar Colony</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.27 km</strong><br>             Direction: NW<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3946344&mlon=78.4519084#map=17/17.3946344/78.4519084' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_49f207175b87083bec9a6d0c5143ebd7.setContent(html_46eae9c28f8edc7a4e8c1ed9168a599d);
+            
+        
+
+        marker_c2d77a7e68cc9b3b5883048c0c75b5d0.bindPopup(popup_49f207175b87083bec9a6d0c5143ebd7)
+        ;
+
+        
+    
+    
+                marker_c2d77a7e68cc9b3b5883048c0c75b5d0.setIcon(icon_e34b8ad5fc5002934ab705ef6019e736);
+            
+    
+            var marker_796a8beca1b019215f1701cac0fb73b5 = L.marker(
+                [17.3944196, 78.4626817],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_3b4efe7af23442472631d479ad91b7fb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_deae0e932224365fa0c75539214172fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1c60341ee6d8fc5cde477a3e61067382 = $(`<div id="html_1c60341ee6d8fc5cde477a3e61067382" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Nisha Hospital</strong><br>             <em>Address: 11-5-80, Bazar Ghat ' X' Roads</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.33 km</strong><br>             Direction: NE<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3944196&mlon=78.4626817#map=17/17.3944196/78.4626817' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_deae0e932224365fa0c75539214172fa.setContent(html_1c60341ee6d8fc5cde477a3e61067382);
+            
+        
+
+        marker_796a8beca1b019215f1701cac0fb73b5.bindPopup(popup_deae0e932224365fa0c75539214172fa)
+        ;
+
+        
+    
+    
+                marker_796a8beca1b019215f1701cac0fb73b5.setIcon(icon_3b4efe7af23442472631d479ad91b7fb);
+            
+    
+            var marker_5604cc9c2fd6f4b999975c0996989466 = L.marker(
+                [17.3763924, 78.4676445],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_1a4d656a3c11ad91fd799bf1c61e3c01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1189f885e45e7ac50c394fcb0bdce75f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b20c58593934d8a88ba00dccf0a0a200 = $(`<div id="html_b20c58593934d8a88ba00dccf0a0a200" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Deepa Hospital</strong><br>             <em>Address: 14-2-163, Opposite L.M.G. School, Joshiwadi, Begum Bazar</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.46 km</strong><br>             Direction: SE<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3763924&mlon=78.4676445#map=17/17.3763924/78.4676445' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_1189f885e45e7ac50c394fcb0bdce75f.setContent(html_b20c58593934d8a88ba00dccf0a0a200);
+            
+        
+
+        marker_5604cc9c2fd6f4b999975c0996989466.bindPopup(popup_1189f885e45e7ac50c394fcb0bdce75f)
+        ;
+
+        
+    
+    
+                marker_5604cc9c2fd6f4b999975c0996989466.setIcon(icon_1a4d656a3c11ad91fd799bf1c61e3c01);
+            
+    
+            var marker_f536d5caf74fe7ae4b7948cbcbd6ff3e = L.marker(
+                [17.393511, 78.4568185],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_f952a6ab55d0bc634564b28e4962a2f9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf7e78b017569608a3d310159bf280a3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_176ed9aeb2bd3f3813f9e9ea7af3ed2e = $(`<div id="html_176ed9aeb2bd3f3813f9e9ea7af3ed2e" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Mansoor Maternity And Childrens Hospital</strong><br>             <em>Address: 10-2-317/1/A/9/B, Beside Hotel Riyan, Vijayanagar Colony</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.05 km</strong><br>             Direction: NE<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.393511&mlon=78.4568185#map=17/17.393511/78.4568185' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_cf7e78b017569608a3d310159bf280a3.setContent(html_176ed9aeb2bd3f3813f9e9ea7af3ed2e);
+            
+        
+
+        marker_f536d5caf74fe7ae4b7948cbcbd6ff3e.bindPopup(popup_cf7e78b017569608a3d310159bf280a3)
+        ;
+
+        
+    
+    
+                marker_f536d5caf74fe7ae4b7948cbcbd6ff3e.setIcon(icon_f952a6ab55d0bc634564b28e4962a2f9);
+            
+    
+            var marker_88605716349f8094d1aa6f94ddf5dce1 = L.marker(
+                [17.3903338, 78.4514802],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_612d5738569705f87353165969503419 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_590a0c9cf1c265ef422464b2c49b410c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9b9e0ecdf57628f26420d1e216cfdd0b = $(`<div id="html_9b9e0ecdf57628f26420d1e216cfdd0b" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Healing Touch Hospital</strong><br>             <em>Address: #10-2-350/1/4, Ohad Residency, Flat No - G1, Indira Nagar, Asif Nagar</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">0.87 km</strong><br>             Direction: NW<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3903338&mlon=78.4514802#map=17/17.3903338/78.4514802' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_590a0c9cf1c265ef422464b2c49b410c.setContent(html_9b9e0ecdf57628f26420d1e216cfdd0b);
+            
+        
+
+        marker_88605716349f8094d1aa6f94ddf5dce1.bindPopup(popup_590a0c9cf1c265ef422464b2c49b410c)
+        ;
+
+        
+    
+    
+                marker_88605716349f8094d1aa6f94ddf5dce1.setIcon(icon_612d5738569705f87353165969503419);
+            
+    
+            var marker_c634d5742d551d23af6bafdf89c4fcb2 = L.marker(
+                [17.3922555, 78.4631672],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_bf67925605a50c75f8027762c1761535 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_12736fbcece8c6b7d9a959339f3ad310 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_509f1807828d23d289fdfa4c7b9ee526 = $(`<div id="html_509f1807828d23d289fdfa4c7b9ee526" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Area Hospital, Nampally</strong><br>             <em>Address: Address not available</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.16 km</strong><br>             Direction: NE<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3922555&mlon=78.4631672#map=17/17.3922555/78.4631672' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_12736fbcece8c6b7d9a959339f3ad310.setContent(html_509f1807828d23d289fdfa4c7b9ee526);
+            
+        
+
+        marker_c634d5742d551d23af6bafdf89c4fcb2.bindPopup(popup_12736fbcece8c6b7d9a959339f3ad310)
+        ;
+
+        
+    
+    
+                marker_c634d5742d551d23af6bafdf89c4fcb2.setIcon(icon_bf67925605a50c75f8027762c1761535);
+            
+    
+            var marker_e296f14ebfd41e433bf0dfa3b4130c4a = L.marker(
+                [17.3949495, 78.4573924],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_ccd3b3bd40c9949aa6dea0295ffd763f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9550b722d185ca20974cb666a4cd4a36 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cd65d29e4c6978f66f9aacfcd84a7f1b = $(`<div id="html_cd65d29e4c6978f66f9aacfcd84a7f1b" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">SRISHTI EYE CENTRE</strong><br>             <em>Address: H.No: 10-2-300/A/2, Nukkula Arcade, Vijayanagar Colony Main Road, Above Canara Bank</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.22 km</strong><br>             Direction: NE<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3949495&mlon=78.4573924#map=17/17.3949495/78.4573924' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_9550b722d185ca20974cb666a4cd4a36.setContent(html_cd65d29e4c6978f66f9aacfcd84a7f1b);
+            
+        
+
+        marker_e296f14ebfd41e433bf0dfa3b4130c4a.bindPopup(popup_9550b722d185ca20974cb666a4cd4a36)
+        ;
+
+        
+    
+    
+                marker_e296f14ebfd41e433bf0dfa3b4130c4a.setIcon(icon_ccd3b3bd40c9949aa6dea0295ffd763f);
+            
+    
+            var marker_280ade8ba8193a8a91dd2ad0b3be7433 = L.marker(
+                [17.3953666, 78.4544152],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_cbda6027a468896b08ae9c96e34f78dc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_75f7d3e4b29b57952949f22219364a57 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_74afc5973f84bc75c9f40b8df1f4d21d = $(`<div id="html_74afc5973f84bc75c9f40b8df1f4d21d" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Medicure Diagnostic and Research Center(Alekhya Scanning Center)</strong><br>             <em>Address: Vijayanagar Colony</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.28 km</strong><br>             Direction: NW<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3953666&mlon=78.4544152#map=17/17.3953666/78.4544152' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_75f7d3e4b29b57952949f22219364a57.setContent(html_74afc5973f84bc75c9f40b8df1f4d21d);
+            
+        
+
+        marker_280ade8ba8193a8a91dd2ad0b3be7433.bindPopup(popup_75f7d3e4b29b57952949f22219364a57)
+        ;
+
+        
+    
+    
+                marker_280ade8ba8193a8a91dd2ad0b3be7433.setIcon(icon_cbda6027a468896b08ae9c96e34f78dc);
+            
+    
+            var marker_dea500f8d888ff522e1f3b24e6b3012f = L.marker(
+                [17.3923182, 78.4624848],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_066e2d325c9620cb81e239a00383bfa2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c03d1416aaad85e7b1a45b21a9f1ca07 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8b88e4051127995cdaafa614fb2a70ef = $(`<div id="html_8b88e4051127995cdaafa614fb2a70ef" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Unnamed Hospital</strong><br>             <em>Address: Address not available</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.12 km</strong><br>             Direction: NE<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3923182&mlon=78.4624848#map=17/17.3923182/78.4624848' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_c03d1416aaad85e7b1a45b21a9f1ca07.setContent(html_8b88e4051127995cdaafa614fb2a70ef);
+            
+        
+
+        marker_dea500f8d888ff522e1f3b24e6b3012f.bindPopup(popup_c03d1416aaad85e7b1a45b21a9f1ca07)
+        ;
+
+        
+    
+    
+                marker_dea500f8d888ff522e1f3b24e6b3012f.setIcon(icon_066e2d325c9620cb81e239a00383bfa2);
+            
+    
+            var marker_e58ad25359ff0a670acba6ff8ff2316b = L.marker(
+                [17.3841667, 78.4562354],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_ad5c42babc2853958487b4c99607b0f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3aee7b83fdb97f65c9b355b3977a6254 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8766bbdd6a3601bf7aa1d7cd79df2c6d = $(`<div id="html_8766bbdd6a3601bf7aa1d7cd79df2c6d" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">D.K.GOVT. HOMOEO HOSPITAL</strong><br>             <em>Address: Address not available</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">0.03 km</strong><br>             Direction: NW<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3841667&mlon=78.4562354#map=17/17.3841667/78.4562354' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_3aee7b83fdb97f65c9b355b3977a6254.setContent(html_8766bbdd6a3601bf7aa1d7cd79df2c6d);
+            
+        
+
+        marker_e58ad25359ff0a670acba6ff8ff2316b.bindPopup(popup_3aee7b83fdb97f65c9b355b3977a6254)
+        ;
+
+        
+    
+    
+                marker_e58ad25359ff0a670acba6ff8ff2316b.setIcon(icon_ad5c42babc2853958487b4c99607b0f7);
+            
+    
+            var marker_017c0cb0415a2a991f58c476da7dd676 = L.marker(
+                [17.392244, 78.4601927],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_bd2366dd3b9c804afdfcb2c3d746b0c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7e873e0eea3c2c7a27c60aa1538838dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_78864a27f536d1c083111d4579858a0a = $(`<div id="html_78864a27f536d1c083111d4579858a0a" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">MNJ Institute of Oncology and Regional Cancer Center</strong><br>             <em>Address: Address not available</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.00 km</strong><br>             Direction: NE<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.392244&mlon=78.4601927#map=17/17.392244/78.4601927' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_7e873e0eea3c2c7a27c60aa1538838dd.setContent(html_78864a27f536d1c083111d4579858a0a);
+            
+        
+
+        marker_017c0cb0415a2a991f58c476da7dd676.bindPopup(popup_7e873e0eea3c2c7a27c60aa1538838dd)
+        ;
+
+        
+    
+    
+                marker_017c0cb0415a2a991f58c476da7dd676.setIcon(icon_bd2366dd3b9c804afdfcb2c3d746b0c3);
+            
+    
+            var marker_8d05fffe877706bacbdbda7dbe18b791 = L.marker(
+                [17.3951477, 78.4556625],
+                {
+}
+            ).addTo(marker_cluster_c664b54f6c13abcde49da33c10a5a035);
+        
+    
+            var icon_e9fc697f27fc15083eb5d3e93f758657 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8864baf14710d4b8844e42be4d667d34 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_116f6ee1b8f0a3b78cb427de53b26e8d = $(`<div id="html_116f6ee1b8f0a3b78cb427de53b26e8d" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">MK Dentistry</strong><br>             <em>Address: Address not available</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.24 km</strong><br>             Direction: NW<br>             <a href='https://www.openstreetmap.org/directions?mlat=17.3951477&mlon=78.4556625#map=17/17.3951477/78.4556625' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_8864baf14710d4b8844e42be4d667d34.setContent(html_116f6ee1b8f0a3b78cb427de53b26e8d);
+            
+        
+
+        marker_8d05fffe877706bacbdbda7dbe18b791.bindPopup(popup_8864baf14710d4b8844e42be4d667d34)
+        ;
+
+        
+    
+    
+                marker_8d05fffe877706bacbdbda7dbe18b791.setIcon(icon_e9fc697f27fc15083eb5d3e93f758657);
+            
+    
+            marker_cluster_c664b54f6c13abcde49da33c10a5a035.addTo(map_b2bff0ae41fc0cce2b20412d95a68dfb);
+        
+</script>
+</html>

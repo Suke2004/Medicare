@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d401de4eeb91adfa9c5dd1fd2d571594 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 10px; left: 10px; width: 240px; height: auto; 
+                background-color: rgba(255, 255, 255, 0.8); z-index:9999; border:2px solid grey; 
+                font-size:14px; padding: 10px; border-radius: 5px;">
+    <i class="fa fa-map-marker" style="color:blue"></i>&nbsp;You are here<br>
+    <i class="fa fa-map-marker" style="color:red"></i>&nbsp;Nearby Hospitals<br>
+    <p>Click on the markers for details!</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_d401de4eeb91adfa9c5dd1fd2d571594" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d401de4eeb91adfa9c5dd1fd2d571594 = L.map(
+                "map_d401de4eeb91adfa9c5dd1fd2d571594",
+                {
+                    center: [23.547, 87.2902],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5755b2e938f9aff1e69aa5811f74d356 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e | Data by \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5755b2e938f9aff1e69aa5811f74d356.addTo(map_d401de4eeb91adfa9c5dd1fd2d571594);
+        
+    
+            var marker_02393f438f55141b853b152f6d383981 = L.marker(
+                [23.547, 87.2902],
+                {
+}
+            ).addTo(map_d401de4eeb91adfa9c5dd1fd2d571594);
+        
+    
+            var icon_61e845b8566e30e463f8657bb56b1d64 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_02393f438f55141b853b152f6d383981.bindTooltip(
+                `<div>
+                     You are here
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02393f438f55141b853b152f6d383981.setIcon(icon_61e845b8566e30e463f8657bb56b1d64);
+            
+    
+            var marker_cluster_0139a65727927c2099b66f6d964b65f9 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_d4ff95b17a0ea131965ffcb5f2db9d59 = L.marker(
+                [23.53966, 87.3002172],
+                {
+}
+            ).addTo(marker_cluster_0139a65727927c2099b66f6d964b65f9);
+        
+    
+            var icon_8a16a843243b9a7d1476bb19786de7f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_980788ad28ab7c69ed6a2030f2a639f1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6d30e677c618b830e3c4f328a4811296 = $(`<div id="html_6d30e677c618b830e3c4f328a4811296" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Durgapur City clinic and Nursing Home Pvt Ltd</strong><br>             <em>Address: Doctors Colony, Central Park, City Centre, Durgapur</em><br>             Phone: <strong>245-5262 / 254-6600</strong><br>             Distance: <strong style="color: green;">1.31 km</strong><br>             Direction: SE<br>             <a href='https://www.openstreetmap.org/directions?mlat=23.53966&mlon=87.3002172#map=17/23.53966/87.3002172' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_980788ad28ab7c69ed6a2030f2a639f1.setContent(html_6d30e677c618b830e3c4f328a4811296);
+            
+        
+
+        marker_d4ff95b17a0ea131965ffcb5f2db9d59.bindPopup(popup_980788ad28ab7c69ed6a2030f2a639f1)
+        ;
+
+        
+    
+    
+                marker_d4ff95b17a0ea131965ffcb5f2db9d59.setIcon(icon_8a16a843243b9a7d1476bb19786de7f7);
+            
+    
+            var marker_98165f1158132bc9014caa06063d7cb1 = L.marker(
+                [23.5333414, 87.2936229],
+                {
+}
+            ).addTo(marker_cluster_0139a65727927c2099b66f6d964b65f9);
+        
+    
+            var icon_5d29c7a5d832ef8b554981ef2b4fcaf3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bde7369c1d54139de97e3746740507d1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_006a86524b24291c78c06ae5829a9549 = $(`<div id="html_006a86524b24291c78c06ae5829a9549" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Disha Eye Hospitals And Research Centre Pvt Ltd</strong><br>             <em>Address: Road No-100, Palasdiha, Durgapur</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.55 km</strong><br>             Direction: SE<br>             <a href='https://www.openstreetmap.org/directions?mlat=23.5333414&mlon=87.2936229#map=17/23.5333414/87.2936229' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_bde7369c1d54139de97e3746740507d1.setContent(html_006a86524b24291c78c06ae5829a9549);
+            
+        
+
+        marker_98165f1158132bc9014caa06063d7cb1.bindPopup(popup_bde7369c1d54139de97e3746740507d1)
+        ;
+
+        
+    
+    
+                marker_98165f1158132bc9014caa06063d7cb1.setIcon(icon_5d29c7a5d832ef8b554981ef2b4fcaf3);
+            
+    
+            var marker_be5a146dcea4fef25f27e862916d538f = L.marker(
+                [23.539446, 87.30049],
+                {
+}
+            ).addTo(marker_cluster_0139a65727927c2099b66f6d964b65f9);
+        
+    
+            var icon_6bd6505acf717ac26616b2836ee13549 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8cf5a7a09725ba193466a5ea98ebdb22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6175bf2db700a3a96a1c824d03ff2d91 = $(`<div id="html_6175bf2db700a3a96a1c824d03ff2d91" style="width: 100.0%; height: 100.0%;">         <div style="font-size: 16px; line-height: 1.5; color: #333; background-color: #fff; border-radius: 8px; padding: 10px; border: 1px solid #ddd;">             <strong style="font-size: 18px;">Durgapur City Hospital</strong><br>             <em>Address: Central Park, Doctor's Colony, Durgapur</em><br>             Phone: <strong>No phone number available</strong><br>             Distance: <strong style="color: green;">1.34 km</strong><br>             Direction: SE<br>             <a href='https://www.openstreetmap.org/directions?mlat=23.539446&mlon=87.30049#map=17/23.539446/87.30049' target='_blank' style="color: blue; text-decoration: underline;">Get Directions</a>         </div>         </div>`)[0];
+                popup_8cf5a7a09725ba193466a5ea98ebdb22.setContent(html_6175bf2db700a3a96a1c824d03ff2d91);
+            
+        
+
+        marker_be5a146dcea4fef25f27e862916d538f.bindPopup(popup_8cf5a7a09725ba193466a5ea98ebdb22)
+        ;
+
+        
+    
+    
+                marker_be5a146dcea4fef25f27e862916d538f.setIcon(icon_6bd6505acf717ac26616b2836ee13549);
+            
+    
+            marker_cluster_0139a65727927c2099b66f6d964b65f9.addTo(map_d401de4eeb91adfa9c5dd1fd2d571594);
+        
+</script>
+</html>
