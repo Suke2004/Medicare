@@ -96,8 +96,8 @@ Contributions are welcome! Feel free to **fork** the repository and submit a **p
 
 If you have any questions or suggestions, feel free to reach out:
 - **Email**: lyricsofsongs96@gmail.com
-- **GitHub**: [Jayasree7917](https://github.com/Suke2004)
-- **LinkedIn**: [Jayasree Maddu](https://linkedin.com/in/sukesh-reddy-ustela)
+- **GitHub**: [Suke2004](https://github.com/Suke2004)
+- **LinkedIn**: [Sukesh Reddy Ustela](https://linkedin.com/in/sukesh-reddy-ustela)
 
 ---
 🚀 *Empowering healthcare with technology!*
